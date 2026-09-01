@@ -106,14 +106,18 @@ func usage() {
 }
 
 if let word = CommandLine.arguments.dropFirst().first, !word.isEmpty {
-    do {
-        let service = LookupService()
-        let entry = try await service.lookup(word: word)
+    let service = LookupService()
+    let spinner = TextSpinner()
+    spinner.start(message: "Looking up \(word)…")
 
+    do {
+        let entry = try await service.lookup(word: word)
+        spinner.stop()
         print(entry)
     } catch {
+        spinner.stop()
         print(error.localizedDescription)
     }
 } else {
-    print("Usage: lookup <word>")
+    usage()
 }
