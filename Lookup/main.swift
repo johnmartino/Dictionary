@@ -1,11 +1,14 @@
 import Foundation
 
 private let maximumLineWidth = 80
+private let boldText = "\u{001B}[1m"
 private let secondaryColor = "\u{001B}[38;5;245m"
 private let resetColor = "\u{001B}[0m"
 
 func print(_ entry: DictionaryEntry) {
     for (groupIndex, partOfSpeech) in entry.partsOfSpeech.enumerated() {
+        print("\(boldText)\(entry.word)\(resetColor)")
+        print()
         print(partOfSpeech.partOfSpeech.capitalized)
 
         for (senseIndex, sense) in partOfSpeech.senses.enumerated() {
