@@ -12,7 +12,7 @@ final class TextSpinner {
             var frameIndex = 0
 
             while !Task.isCancelled {
-                Self.write("\r\u{001B}[2K\(frames[frameIndex % frames.count]) \(message)")
+                Self.write("\r\u{001B}[2K\(message) \(frames[frameIndex % frames.count])")
                 frameIndex += 1
 
                 do {
