@@ -6,9 +6,10 @@ private let secondaryColor = "\u{001B}[38;5;245m"
 private let resetColor = "\u{001B}[0m"
 
 func print(_ entry: DictionaryEntry) {
+    print("\(boldText)\(entry.word)\(resetColor)")
+    print()
+
     for (groupIndex, partOfSpeech) in entry.partsOfSpeech.enumerated() {
-        print("\(boldText)\(entry.word)\(resetColor)")
-        print()
         print(partOfSpeech.partOfSpeech.capitalized)
 
         for (senseIndex, sense) in partOfSpeech.senses.enumerated() {
