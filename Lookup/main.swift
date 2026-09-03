@@ -26,8 +26,8 @@ func print(_ entry: DictionaryEntry) {
             if let example = sense.example {
                 printWrapped(
                     "\(exampleLabel)\(example)",
-                    firstLinePrefix: definitionContinuationPrefix, //"        ",
-                    continuationPrefix: definitionContinuationPrefix + exampleLabelSpaces, //"        ",
+                    firstLinePrefix: definitionContinuationPrefix,
+                    continuationPrefix: definitionContinuationPrefix + exampleLabelSpaces,
                     color: secondaryColor
                 )
             }
