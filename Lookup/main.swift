@@ -21,11 +21,13 @@ func print(_ entry: DictionaryEntry) {
                 continuationPrefix: definitionContinuationPrefix
             )
 
+            let exampleLabel = "e.g., "
+            let exampleLabelSpaces = String(repeating: " ", count: exampleLabel.count)
             if let example = sense.example {
                 printWrapped(
-                    "example: \(example)",
-                    firstLinePrefix: "        ",
-                    continuationPrefix: "        ",
+                    "\(exampleLabel)\(example)",
+                    firstLinePrefix: definitionContinuationPrefix, //"        ",
+                    continuationPrefix: definitionContinuationPrefix + exampleLabelSpaces, //"        ",
                     color: secondaryColor
                 )
             }
