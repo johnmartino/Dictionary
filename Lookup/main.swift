@@ -7,6 +7,14 @@ private let resetColor = "\u{001B}[0m"
 
 func print(_ entry: DictionaryEntry) {
     print("\(boldText)\(entry.word)\(resetColor)")
+    if !entry.forms.isEmpty {
+        printWrapped(
+            entry.forms.joined(separator: ", "),
+            firstLinePrefix: "",
+            continuationPrefix: "",
+            color: secondaryColor
+        )
+    }
     print()
 
     for (groupIndex, partOfSpeech) in entry.partsOfSpeech.enumerated() {
@@ -50,6 +58,8 @@ func print(_ entry: DictionaryEntry) {
 
     printRelatedWords(entry.synonyms, heading: "Synonyms")
     printRelatedWords(entry.antonyms, heading: "Antonyms")
+    printRelatedWords(entry.derived, heading: "Derived")
+    printRelatedWords(entry.related, heading: "Related")
 }
 
 private func printRelatedWords(_ words: [String], heading: String) {
